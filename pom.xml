@@ -15,7 +15,6 @@
     <description>AWSPractice</description>
     <properties>
         <java.version>11</java.version>
-<!--        <spring-cloud.version>2021.0.4</spring-cloud.version>-->
     </properties>
     <dependencies>
         <dependency>
@@ -50,40 +49,6 @@
             <version>1.4</version>
         </dependency>
 
-
-        <!--<dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-task</artifactId>
-        </dependency>-->
-
-        <!--<dependency>
-            <groupId>software.amazon.awssdk</groupId>
-            <artifactId>iam</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>software.amazon.awssdk</groupId>
-            <artifactId>ec2</artifactId>
-        </dependency>-->
-
-
-        <!--<dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-aws</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-aws-messaging</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-aws-parameter-store-config</artifactId>
-        </dependency>-->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -96,14 +61,6 @@
     </dependencies>
     <dependencyManagement>
         <dependencies>
-            <!--<dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>-->
-
             <dependency>
                 <groupId>com.amazonaws</groupId>
                 <artifactId>aws-java-sdk-bom</artifactId>
@@ -111,20 +68,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
-            <!--<dependency>
-                <groupId>software.amazon.awssdk</groupId>
-                <artifactId>bom</artifactId>
-                <version>2.17.261</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>-->
-
-            <!--<dependency>
-                <groupId>com.amazonaws</groupId>
-                <artifactId>aws-java-sdk</artifactId>
-                <version>1.11.163</version>
-            </dependency>-->
         </dependencies>
     </dependencyManagement>
 
