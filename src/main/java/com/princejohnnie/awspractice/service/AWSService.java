@@ -118,16 +118,6 @@ public class AWSService {
         return null;
     }
 
-    private long getDateDifference(String keyOneLastRotated, String keyTwoLastRotated) {
-
-        Date keyOneDate = DatatypeConverter.parseDateTime(keyOneLastRotated).getTime();
-        Date keyTwoDate = DatatypeConverter.parseDateTime(keyTwoLastRotated).getTime();
-
-        long difference = keyTwoDate.getTime() - keyOneDate.getTime();
-
-        return difference / (24 * 60 * 60 * 1000);
-    }
-
     private String getIdFromArn(String arn) {
         return arn.substring(13, 25);
     }
