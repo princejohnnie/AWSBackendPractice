@@ -88,14 +88,24 @@ public class AWSService {
 
             while ((user = beanReader.read(UserResponse.class, headers)) != null) {
                 long dateCount;
-                String lastRotated = user.isAccess_key_2_active().equalsIgnoreCase("true") ? user.getAccess_key_2_last_rotated() : user.getAccess_key_1_last_rotated();
-                if (user.isAccess_key_1_active().equalsIgnoreCase("true") && user.isAccess_key_2_active().equalsIgnoreCase("true")) {
-                    dateCount = getDateDifference(user.getAccess_key_1_last_rotated(), user.getAccess_key_2_last_rotated());
+                String keyLastRotated;
+
+                if (user.isAccess_key_1_active().equalsIgnoreCase("true")) {
+                    keyLastRotated = user.getAccess_key_1_last_rotated();
+                    if (user.isAccess_key_2_active().equalsIgnoreCase("true")) {
+                        keyLastRotated = user.getAccess_key_2_last_rotated();
+                    }
                 } else {
-                    dateCount = 0;
+                    keyLastRotated = user.getUser_creation_time();
                 }
 
-                responses.add(new ReportResponse(getIdFromArn(user.getArn()), user.getUser(), lastRotated, String.valueOf(dateCount), dateCount > 30 ? Status.CRITICAL : Status.OK));
+                long lastRotatedDateInLong =  DatatypeConverter.parseDateTime(keyLastRotated).getTime().getTime();
+
+                dateCount = System.currentTimeMillis() - lastRotatedDateInLong;
+
+                dateCount = dateCount/(24 * 60 * 60 * 1000);
+
+                responses.add(new ReportResponse(getIdFromArn(user.getArn()), user.getUser(), keyLastRotated, String.valueOf(dateCount), dateCount > 30 ? Status.CRITICAL : Status.OK));
 
             }
 
